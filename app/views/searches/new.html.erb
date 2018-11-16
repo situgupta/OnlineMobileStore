@@ -1,0 +1,39 @@
+<h1> Product Filter</h1>
+
+<b>
+<%= link_to 'Way to Home', products_path %>
+
+</b>
+
+<div style = "margin-top:2%"> 
+
+</div>
+
+<%= form_for @search, html: {class:"pure-form"} do |f| %>
+
+<div class="field">
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+  </div>
+
+  <div class="field">
+    <%= f.label :brand %>
+    <%= f.text_field :brand %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ram %>
+    <%= f.number_field :ram %>
+  </div>
+
+  <div class="field">
+    <%= f.label :storage %>
+    <%= f.number_field :storage %>
+  </div>
+
+   <div class="actions">
+    <%= f.submit "Search" %>
+  </div>
+  
+<% end %>
+

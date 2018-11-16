@@ -1,0 +1,71 @@
+<style type=" ">
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 25px;
+}
+  
+</style>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Mobile Products</h1>
+<%= form_tag products_path, :method=> 'get' do %>
+  <%= text_field_tag :search, params[:search]%>
+  <%= submit_tag "Search"%>
+<%end%>
+
+<h1> Search</h1>
+
+<div style = "margin-top:2%">
+    <b>
+   <span style="">  <%= link_to "Advance Filter", new_search_path %> </span>
+  <span style="margin-left:5%">
+    <%= link_to "Download All Products As Spreadsheet", products_path(format: "xlsx") %>
+    </span>
+    <span style="margin-left:5%">
+      <%= link_to 'Log out', destroy_user_session_path,method: :delete %>
+    </span>
+    </b>
+
+
+</div>
+
+<div style = "margin-top:2%"> 
+
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Model</th>
+      <th>Brand</th>
+      <th>Year</th>
+      <th>Ram</th>
+      <th>Storage</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.model %></td>
+        <td><%= product.brand %></td>
+        <td><%= product.year %></td>
+        <td><%= product.ram %></td>
+        <td><%= product.externalStorage %></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

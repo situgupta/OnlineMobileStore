@@ -1,0 +1,75 @@
+<style type=" ">
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 25px;
+}
+  
+</style>
+
+
+<h1>Top 25 Filtered Result</h1>
+
+<div style = "margin-top:2%">
+ <b> <span style=""> 
+
+<%= link_to'Back to Advance Search', new_search_path %></span>
+<span style="margin-left:5%">
+	<%= link_to 'See All Mobile Products', products_path %>
+</span>
+
+</b>
+
+<% if @search.search_products.empty? %>
+	<p> No Product Found </p>
+<%else%>
+	<span style="margin-left:5%"><b>
+	<%= link_to "Download All Filtered Product As Spreadsheet", searches_path(format: "xlsx", id: @search.id) %></b>
+	</span>
+
+	<div style = "margin-top:2%"> 
+
+	</div>
+	<table>
+		  <thead>
+		    <tr>
+		      <th>Name</th>
+		      <th>Model</th>
+		      <th>Brand</th>
+		      <th>Year</th>
+		      <th>Ram</th>
+		      <th>Storage</th>
+		      <!-- <th colspan="3"></th> -->
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @search.search_products.each_with_index do |product,index| %>
+
+		    	<% if index.to_s == "25"%>
+		    		<%break%>
+		    	<% else %>
+
+			      <tr>
+			        <td><%= product.name %></td>
+			        <td><%= product.model %></td>
+			        <td><%= product.brand %></td>
+			        <td><%= product.year %></td>
+			        <td><%= product.ram %></td>
+			        <td><%= product.externalStorage %></td>			       
+			      </tr>
+			     <%end%>			     
+		    <% end %>
+		  </tbody>
+	</table>		
+<%end%>
+
+

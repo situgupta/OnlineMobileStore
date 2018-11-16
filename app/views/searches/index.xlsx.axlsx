@@ -1,0 +1,17 @@
+
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Products") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(name model brand ram storage)
+  
+  # each product is a row on your spreadsheet
+  		@search.search_products.each_with_index do |product,index|
+
+  		if index.to_s =="25"
+  			break
+  		else  	
+    		sheet.add_row [product.name,product.model, product.brand,product.ram, product.externalStorage]
+    	end    
+  end
+end
